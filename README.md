@@ -12,17 +12,19 @@ A spectrogram is a visual representation of the spectrum of frequencies in a sou
 ### Create key points/fingerprints
 Fingerprints is a hash map of key points, song id, and timing. Key points is the loudest frequencies for a given moment in time.  To create key points, I designed a frequencies ranges for each line in the spectrogram. In my project, the ranges are 40-80, 80-120, 120-180, 180-300. (400 Hz-800Hz, 800 Hz-1200 Hz, 1200 Hz-1800 Hz, 1800 Hz-3000 Hz). Key points are marked for each ranges.  I included the fuzz factor in the result reduce the effect of noise environment while recording. The result I got look like it:
 	
-40  43  104  127  236
-40  43  103  172  243
-40  44  82  130  237
-40  63  92  130  289
-40  46  86  123  203
-40  45  92  148  269
-40  77  91  150  252
-40  62  106  144  239
-Etc…
+40  43  104  127  236 <br/>
+40  43  103  172  243 <br/>
+40  44  82  130  237 <br/>
+40  63  92  130  289 <br/>
+40  46  86  123  203 <br/>
+40  45  92  148  269 <br/>
+40  77  91  150  252 <br/>
+40  62  106  144  239 <br/>
+Etc… <br/>
 
-And the spectrogram with highlighted key points looks like this:  
+And the spectrogram with highlighted key points looks like this:   <br/>
+
+![Image of Yaktocat](https://raw.githubusercontent.com/wenjluo26/SoundZam/master/Untitled.png)
 
 Then I put frequencies into a single “long” that looks like this: 2361271044340. I use this long as the key of the hash map, and save other information (song id, time) as the value part of hash map. After having all the data we need. We can finally come to the last part and the most important part of project- fingerprints matching!
 
