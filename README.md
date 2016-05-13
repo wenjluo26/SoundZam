@@ -10,7 +10,7 @@ I implemented a microphone in Soundzam with no problem by using “TargetDataLin
 Spectrogram/Discrete Fourier Transform
 A spectrogram is a visual representation of the spectrum of frequencies in a sound or other signal as they vary with time. Spectrogram is contains three axis: On one axis is time, on another is frequency, and on the 3rd is intensity.  Each point on the graph represents the intensity of a given frequency at a specific point in time. To turn our “time domain” data into “frequency domain” data we need to apply “Discrete Fourier Transform”. However, we lost our time information during the transforming. So I sliced Time domain into many tiny pieces, than I apply “Discrete Fourier Transform” on every piece. Create an array that sort “frequency domain” by time order. The algorithm for Discrete Fourier Transform I used can be found here http://introcs.cs.princeton.edu/java/97data/FFT.java 
 ### Create key points/fingerprints
-	Fingerprints is a hash map of key points, song id, and timing. Key points is the loudest frequencies for a given moment in time.  To create key points, I designed a frequencies ranges for each line in the spectrogram. In my project, the ranges are 40-80, 80-120, 120-180, 180-300. (400 Hz-800Hz, 800 Hz-1200 Hz, 1200 Hz-1800 Hz, 1800 Hz-3000 Hz). Key points are marked for each ranges.  I included the fuzz factor in the result reduce the effect of noise environment while recording. The result I got look like it:
+Fingerprints is a hash map of key points, song id, and timing. Key points is the loudest frequencies for a given moment in time.  To create key points, I designed a frequencies ranges for each line in the spectrogram. In my project, the ranges are 40-80, 80-120, 120-180, 180-300. (400 Hz-800Hz, 800 Hz-1200 Hz, 1200 Hz-1800 Hz, 1800 Hz-3000 Hz). Key points are marked for each ranges.  I included the fuzz factor in the result reduce the effect of noise environment while recording. The result I got look like it:
 	
 40  43  104  127  236
 40  43  103  172  243
@@ -27,7 +27,7 @@ And the spectrogram with highlighted key points looks like this:
 Then I put frequencies into a single “long” that looks like this: 2361271044340. I use this long as the key of the hash map, and save other information (song id, time) as the value part of hash map. After having all the data we need. We can finally come to the last part and the most important part of project- fingerprints matching!
 
 ### Fingerprint Matching/recommendation playlist
-	During the matching process, I created a hash map that use song ID as its key, offset time and counts of repeating match offset as its value. If a certain song has the most hits count in offset time with sample.  Soundzam returns the infomation of song to the user. Soundzam will also acquire more information about the song from Last.fm such as information about artist, album, and tag of song. User has the option to get the recommendation playlist based on the tag of song 
+During the matching process, I created a hash map that use song ID as its key, offset time and counts of repeating match offset as its value. If a certain song has the most hits count in offset time with sample.  Soundzam returns the infomation of song to the user. Soundzam will also acquire more information about the song from Last.fm such as information about artist, album, and tag of song. User has the option to get the recommendation playlist based on the tag of song 
 
 
 ## Conclusions - 
@@ -35,9 +35,9 @@ During this project, I have accomplished on creating a fully working music ident
 
 
 ## References -
-Creating Shazam in Java | royvanrijn http://www.royvanrijn.com/blog/2010/06/creating-shazam-in-java/ 
-How Shazam Works | Free Won't https://laplacian.wordpress.com/2009/01/10/how-shazam-works/ 
-FFT.java http://introcs.cs.princeton.edu/java/97data/FFT.java 
-Java Sound Resources http://www.jsresources.org/ 
-lastfm-java - Last.fm API bindings for Java - Google Project Hosting https://code.google.com/p/lastfm-java/ 
-mpatric/mp3agic · GitHub https://github.com/mpatric/mp3agic 
+Creating Shazam in Java | royvanrijn http://www.royvanrijn.com/blog/2010/06/creating-shazam-in-java/  <br/>
+How Shazam Works | Free Won't https://laplacian.wordpress.com/2009/01/10/how-shazam-works/ <br/>
+FFT.java http://introcs.cs.princeton.edu/java/97data/FFT.java <br/>
+Java Sound Resources http://www.jsresources.org/ <br/>
+lastfm-java - Last.fm API bindings for Java - Google Project Hosting https://code.google.com/p/lastfm-java/ <br/>
+mpatric/mp3agic · GitHub https://github.com/mpatric/mp3agic <br/>
