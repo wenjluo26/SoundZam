@@ -4,6 +4,7 @@
 * rework on GUI
 * add playback funtion
 * specturm viewer
+
 ##Introduction - 
 SoundZam is a music identification program written in JAVA. Soundzam uses a microphone to gather a short 25 seconds sample of audio being played. It creates an acoustic fingerprint based on the sample, and compares it against a database for a match. If it finds a match, it sends information such as the artist, song title, and album back to the user. In addition to music identification function, Soundzam is also able to give user a list of the recommendation music based on the identified music.
 How does it works - 
